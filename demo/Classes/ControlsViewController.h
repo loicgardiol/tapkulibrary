@@ -1,6 +1,6 @@
 //
-//  UIViewAdditions.m
-//  Created by Devin Ross on 7/25/09.
+//  ControlsViewController.h
+//  Created by Devin Ross on 6/30/14.
 //
 /*
  
@@ -28,34 +28,13 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import "UIView+TKCategory.h"
 
+@import UIKit;
 
-@implementation UIView (TKCategory)
+@interface ControlsViewController : UIViewController
 
-
-- (void) addSubviewToBack:(UIView*)view{
-	[self insertSubview:view atIndex:0];
-}
-
-
-- (void) roundOffFrame{
-	self.frame = CGRectMake(roundf(CGRectGetMinX(self.frame)), roundf(CGRectGetMinY(self.frame)), roundf(CGRectGetWidth(self.frame)), roundf(CGRectGetHeight(self.frame)));
-}
-
-
-
-
-- (UIImage*) snapshotImageAfterScreenUpdates:(BOOL)updates{
-	
-	UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, [UIScreen mainScreen].scale);
-	[self drawViewHierarchyInRect:self.bounds  afterScreenUpdates:updates];
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-	
-	return img;
-}
-
-
+@property (nonatomic,strong) TKMultiSwitch *multiswitch1;
+@property (nonatomic,strong) TKMultiSwitch *multiswitch2;
+@property (nonatomic,strong) TKPegSlider *pegSlider;
 
 @end

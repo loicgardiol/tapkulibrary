@@ -1,6 +1,6 @@
 //
-//  UIViewAdditions.m
-//  Created by Devin Ross on 7/25/09.
+//  TKPegSlider.h
+//  Created by Devin Ross on 6/30/14.
 //
 /*
  
@@ -28,34 +28,29 @@
  OTHER DEALINGS IN THE SOFTWARE.
  
  */
-#import "UIView+TKCategory.h"
 
+@import UIKit;
 
-@implementation UIView (TKCategory)
+/** `TKPegSlider` a slider control with set points. */
+@interface TKPegSlider : UIControl
 
+/** The index of the selected item. */
+@property (nonatomic,assign) NSInteger selectedPegIndex;
 
-- (void) addSubviewToBack:(UIView*)view{
-	[self insertSubview:view atIndex:0];
-}
+/** The index of the selected item. */
+@property (nonatomic,assign) NSUInteger numberOfPegs;
 
+/** The left side image. */
+@property (nonatomic,strong) UIImage *leftEndImage;
 
-- (void) roundOffFrame{
-	self.frame = CGRectMake(roundf(CGRectGetMinX(self.frame)), roundf(CGRectGetMinY(self.frame)), roundf(CGRectGetWidth(self.frame)), roundf(CGRectGetHeight(self.frame)));
-}
+/** The right side image. */
+@property (nonatomic,strong) UIImage *rightEndImage;
 
-
-
-
-- (UIImage*) snapshotImageAfterScreenUpdates:(BOOL)updates{
-	
-	UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, [UIScreen mainScreen].scale);
-	[self drawViewHierarchyInRect:self.bounds  afterScreenUpdates:updates];
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-	
-	return img;
-}
-
-
+/**
+ Select an item manually.
+ @param index The index of the item.
+ @param animated Animate the selection of the item.
+ */
+- (void) selectPegAtIndex:(NSInteger)index animated:(BOOL)animated;
 
 @end
