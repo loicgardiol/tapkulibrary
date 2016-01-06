@@ -249,7 +249,7 @@
 		UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(x, 0, 20, 20)];
 		label.font = [UIFont systemFontOfSize:10];
 		label.text = [str substringToIndex:1];
-		label.textColor = cnt == saturdayShiftedIndex || cnt == sundayShiftedIndex ? WEEKEND_TEXT_COLOR : [UIColor blackColor];
+		label.textColor = (cnt-1) == saturdayShiftedIndex || (cnt-1) == sundayShiftedIndex ? WEEKEND_TEXT_COLOR : [UIColor blackColor];
 		label.textAlignment = NSTextAlignmentCenter;
 		label.userInteractionEnabled = NO;
         [daySymbolsBackgroundView addSubview:label];
